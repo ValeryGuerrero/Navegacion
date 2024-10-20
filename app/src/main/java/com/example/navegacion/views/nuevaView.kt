@@ -28,13 +28,13 @@ import com.example.navegacion.components.TitleView
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun DetailView(navController: NavController, id: Int, opcional: String?) {
+fun nuevaView(navController: NavController, id: Int, opcional: String?) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { TitleBar(name = "Detail view") },
+                title = { TitleBar(name = "Nueva vista") },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = Color.Blue
+                    containerColor = Color.Magenta
                 ),
                 navigationIcon = {
                     MainIconButton(icon = Icons.Default.ArrowBack) {
@@ -44,18 +44,18 @@ fun DetailView(navController: NavController, id: Int, opcional: String?) {
             )
         }
     ) {
-        ContentDetailView(navController, id, opcional)
+        ContentnuevaView(navController, id, opcional)
     }
 }
 
 @Composable
-fun ContentDetailView(navController: NavController, id: Int, opcional: String?) {
+fun ContentnuevaView(navController: NavController, id: Int, opcional: String?) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TitleView(name = "Detail View")
+        TitleView(name = "Nueva vista")
         Space()
         TitleView(name = id.toString())
         Space()
@@ -64,11 +64,8 @@ fun ContentDetailView(navController: NavController, id: Int, opcional: String?) 
         }else{
             TitleView(name = opcional.orEmpty())
         }
-        MainButton(name = "Return home", backColor = Color.Blue, color = Color.White) {
-            navController.popBackStack()
-        }
-        MainButton(name = "Nueva vista", backColor = Color.Blue, color = Color.White) {
-            navController.navigate("Nueva/${id}/?${opcional}")
+        MainButton(name = "Return home", backColor = Color.Magenta, color = Color.White) {
+            navController.navigate("Home")
         }
     }
 }
